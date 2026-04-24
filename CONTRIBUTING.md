@@ -39,7 +39,7 @@ We are committed to providing a welcoming and inclusive environment for all cont
 
 ```
 sdk/
-├── javascript/          # JavaScript/TypeScript SDK
+├── js/          # JavaScript/TypeScript SDK
 │   ├── src/            # Source code
 │   ├── tests/          # Test files
 │   └── examples/       # Usage examples

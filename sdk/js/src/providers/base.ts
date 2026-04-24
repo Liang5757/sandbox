@@ -34,6 +34,18 @@ export abstract class BaseProvider {
    */
   abstract getSandbox(functionId: string, sandboxId: string, ...kwargs: any[]): Promise<any>;
 
+
+  /**
+   * Describe an existing sandbox instance without fetching domain information.
+   *
+   * @param functionId - The function ID of the sandbox
+   * @param sandboxId - The ID of the sandbox to describe
+   * @param kwargs - Additional parameters for sandbox description
+   * @returns The response containing sandbox details without domain enrichment
+   */
+  abstract describeSandbox(functionId: string, sandboxId: string, ...kwargs: any[]): Promise<any>;
+
+
   /**
    * List all sandbox instances for a function.
    *

@@ -207,6 +207,46 @@ export class VolcengineProvider extends BaseProvider {
   }
 
   /**
+   * Describe an existing sandbox instance without fetching domain information.
+   * Unlike getSandbox, this method only calls the DescribeSandbox API
+   * and returns the raw response without enriching it with APIG domain data.
+   *
+   * @param functionId - The function ID of the sandbox
+   * @param sandboxId - The ID of the sandbox to describe
+   * @param kwargs - Additional parameters for sandbox description
+   * @returns The response containing sandbox details without domain enrichment
+   */
+  async describeSandbox(
+    functionId: string,
+    sandboxId: string,
+    ...kwargs: any[]
+  ): Promise<any> {
+    try {
+      const body = JSON.stringify({
+        SandboxId: sandboxId,
+        FunctionId: functionId,
+        ...kwargs[0],
+      });
+
+      const response = await request(
+        'POST',
+        new Date(),
+        {},
+        {},
+        this.accessKey,
+        this.secretKey,
+        null,
+        'DescribeSandbox',
+        body,
+      );
+
+      return response;
+    } catch (error) {
+      return error;
+    }
+  }
+
+  /**
    * Set the timeout for an existing sandbox instance.
    *
    * @param functionId - The function ID of the sandbox
